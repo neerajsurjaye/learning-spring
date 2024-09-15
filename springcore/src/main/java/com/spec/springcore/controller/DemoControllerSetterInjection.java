@@ -7,16 +7,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class DemoController {
+public class DemoControllerSetterInjection {
 
     private Coach myCoach;
 
     @Autowired
-    DemoController(@Qualifier("baseball") Coach myCoach){
+    public void setMyCoach(Coach myCoach){
         this.myCoach = myCoach;
     }
 
-    @GetMapping("/dailyworkout")
+
+    @GetMapping("/dailyworkoutsecond")
     public String getDailyWorkout(){
         return myCoach.getDailyWorkout();
     }
